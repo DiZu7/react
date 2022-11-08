@@ -6,6 +6,7 @@ module.exports = merge(common, {
   devtool: 'inline-source-map',
   devServer: {
     static: './review_build',
+    hot: true,
   },
   module: {
     rules: [

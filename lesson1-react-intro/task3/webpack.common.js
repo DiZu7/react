@@ -6,11 +6,9 @@ module.exports = {
   entry: {
     main: path.resolve(__dirname, './src/index.js'),
   },
-
   output: {
-    path: path.resolve(__dirname, 'review_build'),
+    path: path.resolve(__dirname, './review_build'),
     filename: '[name].js',
-    clean: true,
   },
   module: {
     rules: [
