@@ -11,6 +11,6 @@ const userInfo = {
 };
 
 ReactDOM.render(
-  <Comment user={userInfo} text="Good job!" date={new Date('2022-11-09T11:30:19.566Z')} />,
+  <Comment author={userInfo} text="Good job!" date={new Date('2022-11-09T11:30:19.566Z')} />,
   rootElem,
 );
