@@ -1,8 +1,11 @@
 // algo
-// 1. describe handler
-// - on mouse enter - show text of color in title
-// - erase field after mouse out
-// 2. add handler event on buttom elem
+// set state color in constuctor
+// create color variables
+// 1. describe handlers
+// - on mouse enter - change state on e.target color name
+// - mouse out - change state on empty string
+// 2. add handlers on button elem
+// 3. add state.color on picker__title
 
 import React, { Component } from 'react';
 import './index.scss';
