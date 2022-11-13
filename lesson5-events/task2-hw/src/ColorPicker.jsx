@@ -15,21 +15,27 @@ const bisque = 'Bisque';
 class ColorPicker extends Component {
   constructor(props) {
     super(props);
-    // this.colorName = 'text';
+    this.state = {
+      colorName: null,
+    };
   }
 
   showColor = color => {
-    document.querySelector('.picker__title').textContent = color;
+    this.setState({
+      colorName: color,
+    });
   };
 
   cleanField = () => {
-    document.querySelector('.picker__title').textContent = '';
+    this.setState({
+      colorName: '',
+    });
   };
 
   render() {
     return (
       <div>
-        <div className="picker__title"></div>
+        <div className="picker__title">{this.state.colorName}</div>
         <div>
           <button
             className="picker__button picker__button_coral"
