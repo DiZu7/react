@@ -33,57 +33,57 @@ class Auth extends React.Component {
     });
   };
 
-  renderSpinner = () => {
-    if (!this.state.isSpinnerOn) {
-      return null;
-    }
+  // renderSpinner = () => {
+  //   if (!this.state.isSpinnerOn) {
+  //     return null;
+  //   }
 
-    setTimeout(() => {
-      this.setState({
-        isSpinnerOn: false,
-      });
-    }, 2000);
+  //   setTimeout(() => {
+  //     this.setState({
+  //       isSpinnerOn: false,
+  //     });
+  //   }, 2000);
 
-    return <Spinner size={80} />;
-  };
+  //   return <Spinner size={80} />;
+  // };
 
-  renderLogout = () => {
-    if (this.state.isSpinnerOn) {
-      return null;
-    }
+  // renderLogout = () => {
+  //   if (this.state.isSpinnerOn) {
+  //     return null;
+  //   }
 
-    return <Logout onLogout={this.onLogout} />;
-  };
+  //   return <Logout onLogout={this.onLogout} />;
+  // };
 
   render() {
-    // const renderSpinner = () => {
-    //   if (!this.state.isSpinnerOn) {
-    //     return null;
-    //   }
+    const renderSpinner = () => {
+      if (!this.state.isSpinnerOn) {
+        return null;
+      }
 
-    //   setTimeout(() => {
-    //     this.setState({
-    //       isSpinnerOn: false,
-    //     });
-    //   }, 2000);
+      setTimeout(() => {
+        this.setState({
+          isSpinnerOn: false,
+        });
+      }, 2000);
 
-    //   return <Spinner size={40} />;
-    // };
+      return <Spinner size={40} />;
+    };
 
-    // const renderLogout = () => {
-    //   if (this.state.isSpinnerOn) {
-    //     return null;
-    //   }
+    const renderLogout = () => {
+      if (this.state.isSpinnerOn) {
+        return null;
+      }
 
-    //   return <Logout onLogout={this.onLogout} />;
-    // };
+      return <Logout onLogout={this.onLogout} />;
+    };
 
     return (
       <>
         {this.state.isLoggedIn ? (
           <>
-            {this.renderSpinner()}
-            {this.renderLogout()}
+            {renderSpinner()}
+            {renderLogout()}
           </>
         ) : (
           <Login onLogin={this.onLogin} />
