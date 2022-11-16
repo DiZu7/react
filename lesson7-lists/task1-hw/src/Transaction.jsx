@@ -4,7 +4,7 @@ import './index.scss';
 
 const formatDate = time => moment(time).format('D MMM');
 const formatTime = time => moment(time).format('HH:mm');
-// const formatCurrency = amount => new Intl.NumberFormat('en-GB').format(amount);
+const formatCurrency = amount => new Intl.NumberFormat('en-GB').format(amount);
 
 const Transaction = ({ from, to, amount, rate, time }) => {
   return (
@@ -15,7 +15,7 @@ const Transaction = ({ from, to, amount, rate, time }) => {
         {from} → {to}
       </span>
       <span className="transaction__rate">{rate}</span>
-      <span className="transaction__amount">{new Intl.NumberFormat('en-GB').format(amount)}</span>
+      <span className="transaction__amount">{formatCurrency(amount)}</span>
     </li>
   );
 };
