@@ -33,7 +33,7 @@ class UsersList extends React.Component {
           goNext={this.goNext}
           currentPage={this.state.currentPage}
           totalItems={this.props.users.length}
-          itemsPerPage={3}
+          itemsPerPage={this.state.itemsPerPage}
         />
         <ul className="users">
           {this.getPaginatedData(this.props.users).map(user => (
