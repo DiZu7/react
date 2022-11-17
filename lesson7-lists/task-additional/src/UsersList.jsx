@@ -5,25 +5,23 @@ import User from './User';
 class UsersList extends React.Component {
   state = {
     currentPage: 1,
-    index: 3,
+    itemsPerPage: 3,
   };
 
   goPrev = () => {
     this.setState({
       currentPage: this.state.currentPage - 1,
-      // index: this.state.index - 3,
     });
   };
   goNext = () => {
     this.setState({
       currentPage: this.state.currentPage + 1,
-      // index: this.state.index + 3,
     });
   };
 
-  getPaginatedData = (data, itemsPerPage) => {
-    const startIndex = this.state.currentPage * itemsPerPage - itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
+  getPaginatedData = data => {
+    const startIndex = this.state.currentPage * this.state.itemsPerPage - this.state.itemsPerPage;
+    const endIndex = startIndex + this.state.itemsPerPage;
     return data.slice(startIndex, endIndex);
   };
 
@@ -38,9 +36,9 @@ class UsersList extends React.Component {
           itemsPerPage={3}
         />
         <ul className="users">
-          {this.getPaginatedData(this.props.users, 3).map((user, index) =>
-            index < this.state.index ? <User key={user.id} {...user} /> : null,
-          )}
+          {this.getPaginatedData(this.props.users).map(user => (
+            <User key={user.id} {...user} />
+          ))}
         </ul>
       </div>
     );
