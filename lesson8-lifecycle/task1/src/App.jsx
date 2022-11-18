@@ -14,6 +14,7 @@ class App extends React.Component {
   show = () => {
     this.setState({
       visible: true,
+      number: Math.round(Math.random() * 100),
     });
   };
 
@@ -34,7 +35,7 @@ class App extends React.Component {
       <>
         <button onClick={this.show}>Show</button>
         <button onClick={this.hide}>Hide</button>
-        <button onClick={this.update}>Update</button>
+        {/* <button onClick={this.update}>Update</button> */}
         <div>{this.state.visible && <Life number={this.state.number} />}</div>
       </>
     );
