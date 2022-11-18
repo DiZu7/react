@@ -6,16 +6,16 @@ class Life extends React.Component {
 
     this.state = {
       number: Math.round(Math.random() * 100),
-      visible: false,
     };
     console.log('constructor: good place to create state');
   }
 
   componentDidMount() {
-    this.setState({
-      visible: true,
-      number: Math.round(Math.random() * 100),
-    });
+    this.interval = setInterval(() => {
+      this.setState({
+        number: Math.round(Math.random() * 100),
+      });
+    }, 1000);
 
     console.log('componentDidMount: API calls, subscriptions');
   }
@@ -29,15 +29,13 @@ class Life extends React.Component {
   }
 
   componentWillUnmount() {
-    this.setState({
-      visible: false,
-    });
+    clearInterval(this.interval);
     console.log('componentWillUnmount: cleanup before DOM related to component will be removed');
   }
 
   render() {
     console.log('return React element to build DOM');
-    return <div>{this.state.visible && this.state.number}</div>;
+    return <div>{this.state.number}</div>;
   }
 }
 export default Life;
