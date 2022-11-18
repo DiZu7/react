@@ -27,8 +27,8 @@ class Life extends React.Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.interval);
     console.log('componentWillUnmount: cleanup before DOM related to component will be removed');
+    clearInterval(this.interval);
   }
 
   show = () => {
