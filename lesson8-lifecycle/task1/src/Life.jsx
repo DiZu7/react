@@ -11,14 +11,11 @@ class Life extends React.Component {
     console.log('componentDidMount: API calls, subscriptions');
   }
   shouldComponentUpdate(nextProps, nextState) {
-    if (this.props !== nextProps) {
-      console.log('shouldComponentUpdate(nextProps, nextState): decide to render or not to render');
-    }
+    console.log('shouldComponentUpdate(nextProps, nextState): decide to render or not to render');
+    return nextProps.number % 2;
   }
   componentDidUpdate(prevProps, prevState) {
-    if (this.props !== prevProps) {
-      console.log('componentDidUpdate(prevProps, prevState): some updates based on new props');
-    }
+    console.log('componentDidUpdate(prevProps, prevState): some updates based on new props');
   }
 
   componentWillUnmount() {
@@ -27,7 +24,7 @@ class Life extends React.Component {
 
   render() {
     console.log('return React element to build DOM');
-    return <span>{1}</span>;
+    return <div>{this.props.number}</div>;
   }
 }
 export default Life;
