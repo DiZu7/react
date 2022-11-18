@@ -11,9 +11,9 @@ class Life extends React.Component {
   }
 
   componentDidMount() {
-    this.show();
+    this.interval = setInterval(() => this.show(), 1000);
 
-    setTimeout(() => this.hide(), 2000);
+    setTimeout(() => this.hide(), 3000);
 
     console.log('componentDidMount: API calls, subscriptions');
   }
@@ -27,6 +27,7 @@ class Life extends React.Component {
   }
 
   componentWillUnmount() {
+    clearInterval(this.interval);
     console.log('componentWillUnmount: cleanup before DOM related to component will be removed');
   }
 
