@@ -8,30 +8,34 @@
 import React from 'react';
 
 class ConnectionStatus extends React.Component {
-  state = {
-    online: false,
-  };
+  constructor(props) {
+    super(props);
 
-  componentDidMount() {
-    window.addEventListener('online', this.onToggleStatus);
-    window.addEventListener('offline', this.onToggleStatus);
+    this.state = {
+      online: true,
+    };
   }
 
-    componentWillUnmount() {
-      window.removeEventListener('online', onToggleStatus);
-      window.removeEventListener('offline', onToggleStatus);
-    }
+  componentDidMount() {
+    window.addEventListener('offline', this.onToggleStatus);
+    window.addEventListener('online', this.onToggleStatus);
+  }
 
-  onToggleStatus = () => {
+  componentWillUnmount() {
+    window.removeEventListener('online', onToggleStatus);
+    window.removeEventListener('offline', onToggleStatus);
+  }
+
+  onToggleStatus = event => {
     this.setState({
-      online: !this.state.online,
+      online: event.target.navigator.onLine,
     });
   };
 
   render() {
     return (
-      <div className={this.state.offline ? 'status status_offline' : 'status'}>
-        {this.state.offline ? 'Offline' : 'Online'}
+      <div className={this.state.online ? 'status' : 'status status_offline'}>
+        {this.state.online ? 'Online' : 'Offline'}
       </div>
     );
   }
