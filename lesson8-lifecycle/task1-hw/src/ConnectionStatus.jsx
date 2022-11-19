@@ -19,25 +19,33 @@ class ConnectionStatus extends React.Component {
   componentDidMount() {
     window.addEventListener('offline', this.onToggleStatus);
     window.addEventListener('online', this.onToggleStatus);
+    //  window.addEventListener('offline', this.onOfflineStatus);
+    //  window.addEventListener('online', this.onOnlineStatus);
   }
 
-  componentWillUnmount() {
-    window.removeEventListener('online', onToggleStatus);
-    window.removeEventListener('offline', onToggleStatus);
-  }
+  //   componentWillUnmount() {
+  //     window.removeEventListener('online', this.onOnlineStatus);
+  //     window.removeEventListener('offline', this.onOfflineStatus);
+  //   }
 
-  onToggleStatus = event => {
+  onToggleStatus = e => {
+    const { onLine } = e.target.navigator;
     this.setState({
-      online: event.target.navigator.onLine,
+      online: onLine,
     });
   };
 
+  //   onOnlineStatus = e => {
+  //     this.setState({
+  //       online: e.target.navigator.onLine,
+  //     });
+  //   };
+
   render() {
-    return (
-      <div className={this.state.online ? 'status' : 'status status_offline'}>
-        {this.state.online ? 'Online' : 'Offline'}
-      </div>
-    );
+    const className = this.state.online ? 'status' : 'status status_offline';
+    const statusText = this.state.online ? 'online' : 'offline';
+
+    return <div className={className}>{statusText}</div>;
   }
 }
 
