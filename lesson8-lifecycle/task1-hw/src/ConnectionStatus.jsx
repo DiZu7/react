@@ -17,10 +17,10 @@ class ConnectionStatus extends React.Component {
     window.addEventListener('offline', this.onToggleStatus);
   }
 
-  //   componentWillUnmount() {
-  //     window.removeEventListener('online', onToggleStatus);
-  //     window.removeEventListener('offline', onToggleStatus);
-  //   }
+    componentWillUnmount() {
+      window.removeEventListener('online', onToggleStatus);
+      window.removeEventListener('offline', onToggleStatus);
+    }
 
   onToggleStatus = () => {
     this.setState({
