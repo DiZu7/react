@@ -1,9 +1,9 @@
 // algo
 // add status online to state
-// add EventListener on window to check the status (event: online/ offline, onChangeStatus )
-// onChangeStatus => toggle state on online/offline
+// add EventListener on window to check the status (event: online/ offline, onToggleStatus )
+// onToggleStatus => toggle state on online/offline
 // remove EventListener
-// render jsx : if offline - add on jsx elem class status_offline
+// render jsx : if status offline - add on jsx elem class status_offline
 
 import React from 'react';
 
