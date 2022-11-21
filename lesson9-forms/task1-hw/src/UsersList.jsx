@@ -3,28 +3,26 @@ import './index.scss';
 import User from './User';
 import Filter from './Filter';
 
-class UserList extends React.Component {
+class UsersList extends React.Component {
   state = {
     value: '',
-    // count: this.props.users.length,
   };
 
   handleChange = e => {
     this.setState({
       value: e.target.value,
-      // count: this.filterUsers(this.props.users).length,
     });
   };
 
-  filterUsers = users => {
+  filterUsers = (users, filterText) => {
     if (this.state.value === '') {
       return users;
     }
-    return users.filter(({ name }) => name.includes(this.state.value));
+    return users.filter(({ name }) => name.includes(filterText));
   };
 
   render() {
-    const renderedList = this.filterUsers(this.props.users).map(user => (
+    const renderedList = this.filterUsers(this.props.users, this.state.value).map(user => (
       <User key={user.id} {...user} />
     ));
 
@@ -41,4 +39,4 @@ class UserList extends React.Component {
   }
 }
 
-export default UserList;
+export default UsersList;
