@@ -29,15 +29,11 @@ class UsersList extends React.Component {
   //   });
   // };
 
+  renderList = arr => {
+    return arr.map(el => <User key={el.id} {...el} />);
+  };
+
   render() {
-    // const renderedList = this.filterUsers(this.props.users, this.state.value).map(user => (
-    //   <User key={user.id} {...user} />
-    // ));
-
-    // if (this.state.value === '') {
-    //   return users;
-    // }
-
     const newArr = this.props.users.filter(({ name }) =>
       name.toUpperCase().includes(this.state.filterText.toUpperCase()),
     );
@@ -50,9 +46,7 @@ class UsersList extends React.Component {
           onChange={this.handleChange}
         />
         <ul className="users">
-          {this.state.filterText === ''
-            ? this.props.users.map(user => <User key={user.id} {...user} />)
-            : newArr.map(user => <User key={user.id} {...user} />)}
+          {this.state.filterText === '' ? renderList(this.props.users) : renderList(newArr)}
         </ul>
       </div>
     );
