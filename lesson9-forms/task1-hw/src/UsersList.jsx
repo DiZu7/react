@@ -44,7 +44,9 @@ class UsersList extends React.Component {
           onChange={this.handleChange}
         />
         <ul className="users">
-          {this.state.filterText === '' ? renderList(this.props.users) : renderList(newArr)}
+          {this.state.filterText === ''
+            ? this.renderList(this.props.users)
+            : this.renderList(newArr)}
         </ul>
       </div>
     );
