@@ -15,24 +15,10 @@ class UsersList extends React.Component {
     });
   };
 
-  // filterUsers = (users, filterText) => {
-  //   if (filterText === '') {
-  //     return users;
-  //   }
-
-  //   return users.filter(({ name }) => name.includes(filterText));
-  // };
-
-  // handleChangeCount = (users, filterText) => {
-  //   this.setState({
-  //     count: this.filterUsers(users, filterText).length,
-  //   });
-  // };
-
-  renderList = arr => arr.map(el => <User key={el.id} {...el} />);
+  renderList = users => users.map(user => <User key={user.id} {...user} />);
 
   render() {
-    const newArr = this.props.users.filter(({ name }) =>
+    const filteredUsers = this.props.users.filter(({ name }) =>
       name.toUpperCase().includes(this.state.filterText.toUpperCase()),
     );
 
@@ -40,13 +26,13 @@ class UsersList extends React.Component {
       <div>
         <Filter
           filterText={this.state.filterText}
-          count={newArr.length}
+          count={filteredUsers.length}
           onChange={this.handleChange}
         />
         <ul className="users">
           {this.state.filterText === ''
             ? this.renderList(this.props.users)
-            : this.renderList(newArr)}
+            : this.renderList(filteredUsers)}
         </ul>
       </div>
     );
