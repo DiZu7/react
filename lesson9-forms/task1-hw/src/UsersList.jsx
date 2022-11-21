@@ -29,9 +29,7 @@ class UsersList extends React.Component {
   //   });
   // };
 
-  renderList = arr => {
-    return arr.map(el => <User key={el.id} {...el} />);
-  };
+  renderList = arr => arr.map(el => <User key={el.id} {...el} />);
 
   render() {
     const newArr = this.props.users.filter(({ name }) =>
