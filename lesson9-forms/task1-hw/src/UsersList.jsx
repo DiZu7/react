@@ -6,6 +6,7 @@ import Filter from './Filter';
 class UsersList extends React.Component {
   state = {
     value: '',
+    // count: this.props.users.length,
   };
 
   handleChange = e => {
@@ -15,16 +16,27 @@ class UsersList extends React.Component {
   };
 
   filterUsers = (users, filterText) => {
-    if (this.state.value === '') {
+    if (!filterText) {
       return users;
     }
+
     return users.filter(({ name }) => name.includes(filterText));
   };
+
+  // handleChangeCount = (users, filterText) => {
+  //   this.setState({
+  //     count: this.filterUsers(users, filterText).length,
+  //   });
+  // };
 
   render() {
     const renderedList = this.filterUsers(this.props.users, this.state.value).map(user => (
       <User key={user.id} {...user} />
     ));
+
+    // if (this.state.value === '') {
+    //   return users;
+    // }
 
     return (
       <div>
