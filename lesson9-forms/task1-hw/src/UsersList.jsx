@@ -16,7 +16,7 @@ class UsersList extends React.Component {
   };
 
   filterUsers = (users, filterText) => {
-    if (!filterText) {
+    if (filterText === '') {
       return users;
     }
 
