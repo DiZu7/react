@@ -21,10 +21,10 @@ class ShoppingCart extends React.Component {
 
   render() {
     const count = this.state.cartItems.length;
-    
+
     return (
       <div className="column">
-        <CartTitle count={count} userName={this.props.userData.firstName} />
+        <CartTitle count={count} userName={this.props.userName} />
         <ProductsList cartItems={this.state.cartItems} />
       </div>
     );
