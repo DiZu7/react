@@ -25,7 +25,7 @@ class Expand extends React.Component {
             )}
           </button>
         </div>
-        <div className="expand__content">{this.state.isBtnActive ? this.props.children : null}</div>
+        {this.state.isBtnActive && <div className="expand__content">{this.props.children}</div>}
       </div>
     );
   }
