@@ -1,6 +1,5 @@
 import React from 'react';
 import './index.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class Expand extends React.Component {
   state = {
