@@ -20,9 +20,9 @@ class Expand extends React.Component {
           <span className="expand__title">{this.props.title}</span>
           <button className="expand__toggle-btn" onClick={this.toggleStatusBtn}>
             {this.state.isBtnActive ? (
-              <FontAwesomeIcon icon="fas fa-chevron-up" />
+              <i class="fas fa-chevron-up"></i>
             ) : (
-              <FontAwesomeIcon icon="fas fa-chevron-down" />
+              <i class="fas fa-chevron-down"></i>
             )}
           </button>
         </div>

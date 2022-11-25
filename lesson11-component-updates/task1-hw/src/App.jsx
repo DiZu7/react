@@ -16,18 +16,14 @@ import './index.scss';
 // 3. render Expand with props title, callback
 
 class App extends React.Component {
-  
-
   render() {
     return (
-      <div className="app">
-        <Expand title="Some title">
-          <p>
-            Hooks are a new addition in React 16.8. They let you use state and other React features
-            without writing a class.
-          </p>
-        </Expand>
-      </div>
+      <Expand title="Some title">
+        <p>
+          Hooks are a new addition in React 16.8. They let you use state and other React features
+          without writing a class.
+        </p>
+      </Expand>
     );
   }
 }
