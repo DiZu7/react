@@ -4,26 +4,19 @@ import './index.scss';
 
 class User extends React.Component {
   state = {
-    userData: null,
+    userData: '',
   };
 
   componentDidMount() {
-    this.fetchUser(this.props.match.params.userId);
-  }
-
-  fetchUser = userId => {
-    fetch(`https://api.github.com/users/${userId}`)
+    fetch(`https://api.github.com/users/${this.props.match.params.user_id}`)
       .then(response => response.json())
       .then(data => this.setState({ userData: data }));
-  };
+  }
 
   render() {
-    const { userData } = this.state;
-    if (!userData) {
-      return null;
-    }
-
-    const { name, location, avatar_url } = userData;
+    const { name, location, avatar_url } = this.state.userData;
+    //  console.log(this.props.match);
+    //  console.log(this.state.userData);
 
     return (
       <div className="user">
