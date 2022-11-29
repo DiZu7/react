@@ -5,7 +5,7 @@ import './index.scss';
 
 class User extends React.Component {
   state = {
-    userData: '',
+    userData: null,
   };
 
   componentDidMount() {
@@ -30,9 +30,12 @@ class User extends React.Component {
   };
 
   render() {
-    const { name, location, avatar_url } = this.state.userData;
-    //  console.log(this.props.match.params.user_id);
-    //  console.log(this.state.userData);
+    const { userData } = this.state;
+    if (!userData) {
+      return null;
+    }
+
+    const { name, location, avatar_url } = userData;
 
     return (
       <div className="user">
