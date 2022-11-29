@@ -15,7 +15,7 @@ class User extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.match.params.user_id !== prevProps.user_id) {
+    if (this.props.match.params.user_id !== prevProps.match.params.user_id) {
       fetch(`https://api.github.com/users/${this.props.match.params.user_id}`)
         .then(response => response.json())
         .then(data => this.setState({ userData: data }));
