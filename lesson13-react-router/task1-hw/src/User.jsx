@@ -9,18 +9,25 @@ class User extends React.Component {
   };
 
   componentDidMount() {
-    fetch(`https://api.github.com/users/${this.props.match.params.user_id}`)
-      .then(response => response.json())
-      .then(data => this.setState({ userData: data }));
+    this.fetchUserData();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.user_id !== prevProps.match.params.user_id) {
-      fetch(`https://api.github.com/users/${this.props.match.params.user_id}`)
-        .then(response => response.json())
-        .then(data => this.setState({ userData: data }));
+      this.fetchUserData();
     }
   }
+
+  fetchUserData = () => {
+    fetch(`https://api.github.com/users/${this.props.match.params.user_id}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('failed request');
+        }
+        return response.json();
+      })
+      .then(data => this.setState({ userData: data }));
+  };
 
   render() {
     const { name, location, avatar_url } = this.state.userData;
