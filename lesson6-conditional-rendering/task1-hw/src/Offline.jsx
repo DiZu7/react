@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 
-const Offline = props => {
+const Offline = () => {
   return (
     <>
       <span className="status__text">Offline</span>
